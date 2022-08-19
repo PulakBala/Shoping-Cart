@@ -11,48 +11,29 @@ function getButtonPlusClick(isIncrase){
     const caseNumberField = document.getElementById('case-number-field');
     const caseNumberString = caseNumberField.value;
     const previousCaseNumber = parseInt(caseNumberString);
-
     let newCaseNumber;
-
     if(isIncrase === true) {
         newCaseNumber = previousCaseNumber + 1;
     }
     else{
         newCaseNumber = previousCaseNumber - 1;
     }
-
     caseNumberField.value = newCaseNumber;
-
     return newCaseNumber;
 }
-// function getButtonPlusClick(plusNumber){
-//     const caseNumberField = document.getElementById(plusNumber);
-//     const caseNumberString = caseNumberField.value;
-//     const previousCaseNumber = parseInt(caseNumberString);
-//     const newCaseNumber = previousCaseNumber - 1;
-//     caseNumberField.value = newCaseNumber;
-// }
 
-document.getElementById('btn-case-plus').addEventListener('click', function(){
-    // const caseNumberField = document.getElementById('case-number-field');
-    // const caseNumberString = caseNumberField.value;
-    // const previousCaseNumber = parseInt(caseNumberString);
-    // const newCaseNumber = previousCaseNumber + 1;
-    // caseNumberField.value = newCaseNumber;
-    const newCaseNumber = getButtonPlusClick(true);
+function updateCaseTotalNumber(newCaseNumber){
     const caseTotalPrice = newCaseNumber * 59;
     const caseTotalElement = document.getElementById('case-total');
     caseTotalElement.innerText = caseTotalPrice;
+}
 
-
+document.getElementById('btn-case-plus').addEventListener('click', function(){
+    const newCaseNumber = getButtonPlusClick(true);
+    updateCaseTotalNumber(newCaseNumber);
 });
 
-document.getElementById('btn-case-minus').addEventListener('click', function(){
-    // const minusNumberField = document.getElementById('case-number-field');
-    // const minusNumberString = minusNumberField.value;
-    // const previousMinusNumber = parseInt(minusNumberString);
-
-    // const newMinusNumber = previousMinusNumber - 1;
-    // minusNumberField.value = newMinusNumber;
-    getButtonPlusClick(false)
+document.getElementById('btn-case-minus').addEventListener('click', function(){  
+    const newCaseNumber = getButtonPlusClick(false);
+   updateCaseTotalNumber(newCaseNumber);  
 })
