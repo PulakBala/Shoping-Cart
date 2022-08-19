@@ -17,11 +17,17 @@ function updatePhoneTotalPrice(newTotalPrice){
     const newTotalPhone = document.getElementById('phone-total');
     newTotalPhone.innerText = newTotal;
 }
+
 document.getElementById('btn-phone-plus').addEventListener('click', function(){ 
   const newTotalPrice = updatePhoneTotalNumber(true);
    updatePhoneTotalPrice(newTotalPrice);
+   //calculate total
+   calculateSubTotal()
 })
 document.getElementById('btn-phone-minus').addEventListener('click',function(){
    const newTotalPrice = updatePhoneTotalNumber(false);
     updatePhoneTotalPrice(newTotalPrice);
+    //calculate total
+    calculateSubTotal()
+    
 })
